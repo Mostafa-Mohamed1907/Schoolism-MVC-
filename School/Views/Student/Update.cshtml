@@ -1,0 +1,69 @@
+﻿@model Student
+
+@{
+    SelectList depList = new SelectList(ViewBag.data, "Id", "Name");
+}
+
+
+<form asp-method="get" asp-controller="Student" asp-action="SaveUpdate" asp-route-Id="@Model.Id">
+    <div>
+        <input asp-for="Id" type="hidden"></input>
+        <label asp-for="Name">Name:</label>
+        <input asp-for="Name" class="form-control">
+        <span asp-validation-for="Name" class="text-danger"></span><br />
+
+        <label asp-for="Address">Address:</label>
+        <input asp-for="Address" class="form-control">
+        <span asp-validation-for="Address" class="text-danger"></span><br />
+
+        <label asp-for="Image">Image</label>
+        <input asp-for="Image" class="form-control">
+        <span asp-validation-for="Image" class="text-danger"></span> <br />
+
+        <label asp-for="Department.Id" class="form-label">Department</label>
+        <Select asp-for="Department.Id" asp-items="depList" class="form-control">
+        </Select>
+    </div> <BR />
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+@section Scripts
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+#<!-- Old Code -->
+@* <form method="get" action="/Student/SaveUpdate/@Model.Id">
+    <div>
+        <label for="Name" class="form-label">Name:</label>
+        <input type="text" class="form-control" id="Name" Name" name="Name" value="@Model.Name" required data-val="true" data-val-required="Name is required">
+        <span asp-validation-for="Name" class="text-danger"></span><br />
+
+        <label for="Address" class="form-label">Address:</label>
+        <input type="text" class="form-control" id="Address" name="Address" value="@Model.Address" required data-val="true" data-val-required="Address is required">
+        <span asp-validation-for="Address" class="text-danger"></span><br />
+
+        <label for="Image" class="form-label">Image</label>
+        <input type="text" class="form-control" id="Image" name="Image" value="@Model.Image" required data-val="true" data-val-required="Image is required">
+        <span asp-validation-for="Image" class="text-danger"></span> <br />
+
+        <label for="Department" class="form-label">Department</label>
+        <Select name="Department.Id" class="form-control">
+            @foreach (var item in ViewBag.data)
+            {
+                if (Model.Department!.Id == item.Id)
+                {
+                    <option selected value="@item.Id"> @item.Name</option>
+                }
+                else
+                {
+                    <option  value="@item.Id"> @item.Name</option>
+                }
+            }
+        </Select>
+    </div> <BR />
+    <button type="submit" class="btn btn-primary">Update</button>
+</form> *@
+
+<!-- #end Old Code -->

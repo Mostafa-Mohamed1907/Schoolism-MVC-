@@ -1,0 +1,45 @@
+﻿@model List<Student>
+
+<div>
+    <input type="text" id="SearchInput" placeholder="Search For A student" class="form-control mb-3" />
+</div>
+
+<div id="StudentTable">
+    <partial name="_StudentTable" model="Model" />
+</div>
+
+@* <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#SearchInput').on('keyup', function () {
+            var searchTerm = $(this).val();
+            $.ajax({
+                url: '/Student/Search',
+                type: 'GET',
+                data: { searchTerm: searchTerm },
+                success: function (result) {
+                    $('#StudentTable').html(result);
+                }
+            });
+        });
+    });
+</script> *@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#SearchInput').on('keyup', function () {
+            var searchTerm = $(this).val().trim(); // Trim to remove unnecessary spaces
+            $.ajax({
+                url: '/Student/Search', // Ensure this matches your route
+                type: 'GET',
+                data: { searchTerm: searchTerm },
+                success: function (result) {
+                    $('#StudentTable').html(result); // Update the table content
+                },
+                error: function (xhr, status, error) {
+                    console.log("Error: " + error); // Log any errors for debugging
+                }
+            });
+        });
+    });
+</script>

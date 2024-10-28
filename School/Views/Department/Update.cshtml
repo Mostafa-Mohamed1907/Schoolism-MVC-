@@ -1,0 +1,9 @@
+﻿@model School.Models.Department
+
+<form method="get" action="/Department/SaveUpdate/@Model.Id">
+    <div>
+        <label for="Name" class="form-label">Department Name:</label>
+        <input type="text" class="form-control" id="Name" placeholder="Enter Department Name" name="Name" value="@Model.Name">
+    </div> <BR />
+    <button type="submit" class="btn btn-primary">Update Department Name</button>
+</form>

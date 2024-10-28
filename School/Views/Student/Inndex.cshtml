@@ -1,0 +1,21 @@
+﻿@model IEnumerable<School.Models.Student>
+<select>
+    <option selected>Select Name</option>
+    @foreach (var item in Model)
+    {
+        <option>@item.Name</option>
+    }
+</select>
+<br />
+<br />
+
+<select>
+    <option selected> Select Year  </option>
+    @foreach (var item in (List<string>)ViewData["Data"]!)
+    {
+        <option>@item</option>
+    }
+</select>
+<br />
+<br />
+<option> @ViewBag.msg </option>

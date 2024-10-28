@@ -1,0 +1,24 @@
+﻿@model IEnumerable<School.Models.Department>
+
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td> <a href="/Department/Details/@item.Id" class="btn btn-secondary">Details</a> </td>
+                <td> <a href="/Department/Update/@item.Id" class="btn btn-secondary">Update</a> </td>
+                <td><a href="/Department/Delete/@item.Id" class="btn btn-secondary">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/Department/New" class="btn btn-secondary">Add New Department</a>
